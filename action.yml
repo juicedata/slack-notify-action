@@ -17,7 +17,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    -name: send slack notification
+    - name: send slack notification
       uses: slackapi/slack-github-action@v1.18.0
       with:
         channel-id: "${{inputs.channel-id}}"
