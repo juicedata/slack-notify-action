@@ -17,27 +17,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    -name: send slack notification
-      uses: slackapi/slack-github-action@v1.18.0
-      with:
-        channel-id: "${{channel-id}}"
-        payload: |
-          {"attachments": [
-              {
-              "color":"${{color}}",
-              "footer":"qa@juicedata",
-              "footer_icon":"https://s.juicefs.com/static/jfs/logo.svg",
-              "ts": "timestamp.outputs.timestamp }}",
-              "mrkdwn_in":["text"],
-              "author_name":"${{ github.event.pull_request.user.login || github.event.sender.login || github.actor }}",
-              "author_link":"${{ github.event.pull_request.user.html_url || github.event.sender.html_url}}",
-              "author_icon":"${{ github.event.pull_request.user.avatar_url || github.event.sender.avatar_url }}",
-              "title":"${{ github.event.pull_request.title || github.event.head_commit.message }}",
-              "fallback":"Please check the following link:",
-              "text":"https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-              "pretext":"CI check ${{ job.status }} on ${{ github.event_name }}"
-              }
-            ]
-          }
-      env:
-        SLACK_BOT_TOKEN: ${{slack_bot_secret}}  
+    - run: |
+      echo hello 
