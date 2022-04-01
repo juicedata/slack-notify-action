@@ -12,7 +12,7 @@ inputs:
   slack_bot_secret:
     description: 'slack bot secret'
     required: true
-    default: ${{secrets.SLACK_BOT_TOKEN}}
+    default: ''
 
 runs:
   using: "composite"
