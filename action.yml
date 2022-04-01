@@ -24,18 +24,17 @@ runs:
         payload: |
           {"attachments": [
               {
-              "color":"${{inputs.color}}",
-              "footer":"qa@juicedata",
-              "footer_icon":"https://s.juicefs.com/static/jfs/logo.svg",
-              "ts": 1648781457,
+              "pretext":"CI check ${{ job.status }} on ${{ github.event_name }}"
               "mrkdwn_in":["text"],
               "author_name":"${{ github.event.pull_request.user.login || github.event.sender.login || github.actor }}",
               "author_link":"${{ github.event.pull_request.user.html_url || github.event.sender.html_url}}",
               "author_icon":"${{ github.event.pull_request.user.avatar_url || github.event.sender.avatar_url }}",
               "title":"${{ github.event.pull_request.title || github.event.head_commit.message }}",
-              "fallback":"Please check the following link:",
               "text":"https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-              "pretext":"CI check ${{ job.status }} on ${{ github.event_name }}"
+#              "footer":"qa@juicedata",
+#              "footer_icon":"https://s.juicefs.com/static/jfs/logo.svg",
+#              "ts": ${{input.timestamp}},
+              "color":"${{inputs.color}}",
               }
             ]
           }
