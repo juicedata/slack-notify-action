@@ -23,7 +23,7 @@ runs:
         channel-id: "${{inputs.channel-id}}"
         payload: |
           {"attachments": [
-              {
+            {
               "pretext":"CI check ${{ job.status }} on ${{ github.event_name }}",
               "mrkdwn_in":["text"],
               "author_name":"${{ github.event.pull_request.user.login || github.event.sender.login || github.actor }}",
@@ -31,11 +31,8 @@ runs:
               "author_icon":"${{ github.event.pull_request.user.avatar_url || github.event.sender.avatar_url }}",
               "title":"${{ github.event.pull_request.title || github.event.head_commit.message }}",
               "text":"https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-#              "footer":"qa@juicedata",
-#              "footer_icon":"https://s.juicefs.com/static/jfs/logo.svg",
-#              "ts": ${{input.timestamp}},
               "color":"${{inputs.color}}"
-              }
+            }
             ]
           }
       env:
