@@ -17,11 +17,11 @@ inputs:
 runs:
   using: "composite"
   steps:
-    -name: timestama
-      id: timestampp
-      run: | 
-        timestamp=$(date +%s)
-        echo ::set-output name=timestamp::$timestamp
+#    -name: timestampm
+#      id: timestamp
+#      run: | 
+#        timestamp=$(date +%s)
+#        echo ::set-output name=timestamp::$timestamp
     -name: send slack notification
         uses: slackapi/slack-github-action@v1.18.0
         with:
