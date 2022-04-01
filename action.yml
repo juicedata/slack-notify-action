@@ -17,5 +17,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ channel-id }}.
+    - run: echo Hello ${{ inputs.channel-id }}.
       shell: bash
