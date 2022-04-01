@@ -9,7 +9,7 @@ inputs:
     description: 'color'
     required: true
     default: '#CB2431'
-  slack_bot_secret:
+  slack_bot_token:
     description: 'slack bot secret'
     required: true
     default: ''
@@ -40,4 +40,4 @@ runs:
             ]
           }
       env:
-        SLACK_BOT_TOKEN: ${{inputs.slack_bot_secret}}
+        SLACK_BOT_TOKEN: ${{inputs.slack_bot_token}}
