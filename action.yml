@@ -25,7 +25,7 @@ runs:
         payload: |
           {"attachments": [
             {
-              "pretext":"CI check ${{ job.status }} on ${{ github.event_name }}",
+              "pretext":"<@U035KAH1UV6> CI check ${{ job.status }} on ${{ github.event_name }}",
               "mrkdwn_in":["text"],
               "author_name":"${{ github.event.pull_request.user.login || github.event.sender.login || github.actor }}",
               "author_link":"${{ github.event.pull_request.user.html_url || github.event.sender.html_url}}",
