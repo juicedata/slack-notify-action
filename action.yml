@@ -21,6 +21,17 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: set notify user
+      shell: bash
+      run: | 
+        github_id=${{ github.event.pull_request.user.login || github.event.sender.login || github.actor }}
+        echo github_id, $github_id
+        declare -A users=( ["zhoucheng361"]="U035KAH1UV6" ["sanwan"]="U02G0H53KRS")
+        slack_id="${users["$github_id"]}"
+        echo slack_id: $slack_id
+        export notify_user="<@$slack_id>"
+        echo "::set-env name=notify_user::$notify_user"
+        
     - name: send slack notification
       if: ${{github.event_name != 'workflow_dispatch'}} 
       uses: slackapi/slack-github-action@v1.18.0
