@@ -29,8 +29,7 @@ runs:
         declare -A users=( ["zhoucheng361"]="U035KAH1UV6" ["sanwan"]="U02G0H53KRS")
         slack_id="${users["$github_id"]}"
         echo slack_id: $slack_id
-        export notify_user="<@$slack_id>"
-        echo "::set-env name=notify_user::$notify_user"
+        echo "slack_id=$slack_id" >> $GITHUB_ENV
         
     - name: send slack notification
       if: ${{github.event_name != 'workflow_dispatch'}} 
@@ -40,7 +39,7 @@ runs:
         payload: |
           {"attachments": [
             {
-              "pretext":"${{inputs.notify_user}} CI check ${{ job.status }} on ${{ github.event_name }}",
+              "pretext":"<@${{env.slack_id}}> CI check ${{ job.status }} on ${{ github.event_name }}",
               "mrkdwn_in":["text"],
               "author_name":"${{ github.event.pull_request.user.login || github.event.sender.login || github.actor }}",
               "author_link":"${{ github.event.pull_request.user.html_url || github.event.sender.html_url}}",
