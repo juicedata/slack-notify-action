@@ -26,7 +26,7 @@ runs:
       run: | 
         github_id=${{ github.event.pull_request.user.login || github.event.sender.login || github.actor }}
         echo github_id, $github_id
-        declare -A users=( ["zhoucheng361"]="U035KAH1UV6" ["sanwan"]="U02G0H53KRS")
+        declare -A users=( ["zhoucheng361"]="U035KAH1UV6" ["sanwan"]="U02G0H53KRS" ["davies"]="U5RCBSN2C" ["SandyXSD"]="U01UPCZMK99" ["tangyoupeng"]="UK04TUV0C" ["zhijian-pro"]="UK04TUV0C")
         slack_id="${users["$github_id"]}"
         echo slack_id: $slack_id
         echo "slack_id=$slack_id" >> $GITHUB_ENV
