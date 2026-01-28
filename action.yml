@@ -37,18 +37,19 @@ runs:
       with:
         channel-id: "${{inputs.channel-id}}"
         payload: |
-          "text": "CI check ${{ job.status }} on ${{ github.event_name }} by <@${{env.slack_id}}>",
-          {"attachments": [
-            {
-              "pretext":"<@${{env.slack_id}}> CI check ${{ job.status }} on ${{ github.event_name }}",
-              "mrkdwn_in":["text"],
-              "author_name":"${{ github.event.pull_request.user.login || github.event.sender.login || github.actor }}",
-              "author_link":"${{ github.event.pull_request.user.html_url || github.event.sender.html_url}}",
-              "author_icon":"${{ github.event.pull_request.user.avatar_url || github.event.sender.avatar_url }}",
-              "title":"${{ github.event.pull_request.title || github.event.head_commit.message }}",
-              "text":"https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-              "color":"${{inputs.color}}"
-            }
+          {
+            "text": "CI check ${{ job.status }} on ${{ github.event_name }} by <@${{env.slack_id}}>",
+            "attachments": [
+              {
+                "pretext":"<@${{env.slack_id}}> CI check ${{ job.status }} on ${{ github.event_name }}",
+                "mrkdwn_in":["text"],
+                "author_name":"${{ github.event.pull_request.user.login || github.event.sender.login || github.actor }}",
+                "author_link":"${{ github.event.pull_request.user.html_url || github.event.sender.html_url}}",
+                "author_icon":"${{ github.event.pull_request.user.avatar_url || github.event.sender.avatar_url }}",
+                "title":"${{ github.event.pull_request.title || github.event.head_commit.message }}",
+                "text":"https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
+                "color":"${{inputs.color}}"
+              }
             ]
           }
       env:
