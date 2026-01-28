@@ -37,6 +37,7 @@ runs:
       with:
         channel-id: "${{inputs.channel-id}}"
         payload: |
+          "text": "CI check ${{ job.status }} on ${{ github.event_name }} by <@${{env.slack_id}}>",
           {"attachments": [
             {
               "pretext":"<@${{env.slack_id}}> CI check ${{ job.status }} on ${{ github.event_name }}",
