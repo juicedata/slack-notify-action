@@ -17,6 +17,10 @@ inputs:
     description: 'user to notify'
     required: true
     default: ''
+  workflow_name:
+    description: 'workflow name'
+    required: false
+    default: 'workflow'
 
 runs:
   using: "composite"
@@ -38,10 +42,10 @@ runs:
         channel-id: "${{inputs.channel-id}}"
         payload: |
           {
-            "text": "CI check ${{ job.status }} on ${{ github.event_name }} by <@${{env.slack_id}}>",
+            "text": "<@${{env.slack_id}}> CI ${{inputs.workflow_name}} ${{ job.status }} on ${{ github.event_name }}",
             "attachments": [
               {
-                "pretext":"<@${{env.slack_id}}> CI check ${{ job.status }} on ${{ github.event_name }}",
+                "pretext":"<@${{env.slack_id}}> CI ${{inputs.workflow_name}} ${{ job.status }} on ${{ github.event_name }}",
                 "mrkdwn_in":["text"],
                 "author_name":"${{ github.event.pull_request.user.login || github.event.sender.login || github.actor }}",
                 "author_link":"${{ github.event.pull_request.user.html_url || github.event.sender.html_url}}",
